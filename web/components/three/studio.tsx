@@ -20,6 +20,7 @@ export function Studio({ intensity = 1 }: { intensity?: number }) {
         <Lightformer form="rect" intensity={3.2} color="#F3D58A" position={[-6, 1.5, 2]} rotation-y={Math.PI / 2} scale={[6, 2.2, 1]} />
         <Lightformer form="rect" intensity={2.4} color="#e8eeff" position={[6, 1, 1]} rotation-y={-Math.PI / 2} scale={[6, 1.4, 1]} />
         <Lightformer form="ring" intensity={2.6} color="#D6B56D" position={[0, 2, -8]} scale={6} />
+        <Lightformer form="rect" intensity={1.8} color="#E1141C" position={[5, -1, -4]} rotation-y={-Math.PI / 4} scale={[4, 1.2, 1]} />
         <Lightformer form="rect" intensity={1.6} color="#ffffff" position={[0, -3, 5]} rotation-x={-Math.PI / 3} scale={[8, 1, 1]} />
         <Lightformer form="circle" intensity={6} color="#ffffff" position={[3, 4, 6]} scale={1.2} />
       </Environment>

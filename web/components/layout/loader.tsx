@@ -30,9 +30,9 @@ export function Loader() {
             <motion.img
               src={site.logo}
               alt=""
-              className="h-20 w-20"
-              initial={{ opacity: 0, scale: 0.8, rotate: -30, filter: "blur(8px)" }}
-              animate={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)" }}
+              className="h-28 w-28 rounded-full shadow-[0_0_60px_-10px_rgba(225,20,28,0.6)]"
+              initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             />
             <motion.div
@@ -42,12 +42,12 @@ export function Loader() {
               transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             />
             <motion.p
-              className="mt-5 font-display text-sm tracking-[0.5em] text-champagne"
+              className="mt-5 text-xs font-semibold tracking-[0.5em] text-champagne uppercase"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              {site.name}
+              {site.name} · {site.descriptor}
             </motion.p>
           </div>
         </motion.div>

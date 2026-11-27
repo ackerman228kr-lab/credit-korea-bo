@@ -176,7 +176,7 @@ function Rig({
     const cx = focusing ? 0 : -shift;
     easing.damp3(camera.position, [px + cx, 0.75 + py, z], focusing ? 0.5 : 0.35, dt);
     easing.damp(lookX, "current", cx, 0.35, dt);
-    lookAt.set(lookX.current, aspect < 0.8 ? 0.5 : aspect < 1.2 ? 0.3 : 0, -0.6);
+    lookAt.set(lookX.current, aspect < 0.8 ? 0.05 : aspect < 1.2 ? 0.3 : 0, -0.6);
     camera.lookAt(lookAt);
   });
   void n;

@@ -11,9 +11,9 @@ export function LoginForm({ configured, devHint }: { configured: boolean; devHin
   const [state, action, pending] = useActionState(login, null);
   return (
     <form action={action} className="glass-strong w-full max-w-sm rounded-[2rem] p-8">
-      <img src={site.logo} alt="" className="h-12 w-12" />
+      <img src={site.logo} alt="" className="h-20 w-20 rounded-full" />
       <h1 className="mt-6 font-display text-3xl text-white">Админ-панель</h1>
-      <p className="mt-1 text-sm text-platinum/50">{site.name}</p>
+      <p className="mt-1 text-sm text-platinum/50">{site.name} {site.descriptor}</p>
       {!configured ? (
         <p className="mt-6 rounded-xl border border-red-400/30 bg-red-400/10 p-3 text-sm text-red-200">
           Задайте переменную окружения ADMIN_PASSWORD, чтобы включить вход.

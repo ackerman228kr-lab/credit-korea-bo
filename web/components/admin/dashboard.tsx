@@ -77,9 +77,11 @@ export function Dashboard({
     <div className="mx-auto flex max-w-[1400px] flex-col gap-6 p-4 lg:flex-row lg:p-8">
       <aside className="glass-strong flex shrink-0 flex-col rounded-3xl p-4 lg:sticky lg:top-8 lg:h-[calc(100vh-4rem)] lg:w-64">
         <div className="flex items-center gap-3 px-2 py-2">
-          <img src={site.logo} alt="" className="h-9 w-9" />
+          <img src={site.logo} alt="" className="h-10 w-10 rounded-full" />
           <div>
-            <p className="font-display text-base tracking-[0.15em] text-white">{site.name}</p>
+            <p className="text-base font-semibold text-white">
+              Mil<span className="text-ruby">A</span>rt
+            </p>
             <p className="text-[10px] tracking-[0.2em] text-champagne uppercase">Admin</p>
           </div>
         </div>
@@ -95,7 +97,7 @@ export function Dashboard({
             >
               <t.icon className="h-4 w-4" />
               {t.label}
-              {!!t.badge && <span className="ml-auto rounded-full bg-liquid px-2 text-[11px] font-bold text-obsidian">{t.badge}</span>}
+              {!!t.badge && <span className="ml-auto rounded-full bg-ruby px-2 text-[11px] font-bold text-white">{t.badge}</span>}
             </button>
           ))}
         </nav>

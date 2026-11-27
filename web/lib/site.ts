@@ -1,14 +1,14 @@
 /**
- * Brand configuration. Replace /public/brand/logo.svg with the company logo
+ * Brand configuration. Logo: /public/brand/logo.png (original: logo-original.jpg)
  * and adjust the values below — every page reads from here.
  */
 export const site = {
-  name: "CREDIT KOREA",
-  short: "CK",
-  descriptor: "Premium Pawn & Valuation",
+  name: "MilArt",
+  short: "MA",
+  descriptor: "Consulting",
   description:
     "Оценка золота, часов, смартфонов, ноутбуков и техники. Залог и выкуп в премиальном пространстве.",
-  logo: "/brand/logo.svg",
+  logo: "/brand/logo.png",
   phone: "+82 10-0000-0000",
   whatsapp: "821000000000",
   telegram: "https://t.me/",

@@ -7,6 +7,8 @@
   --color-champagne: #d6b56d;
   --color-liquid: #f3d58a;
   --color-platinum: #c9ced6;
+  --color-ruby: #e1141c;
+  --color-ruby-deep: #9e0d13;
   --color-glass: rgba(255, 255, 255, 0.08);
   --color-glass-border: rgba(255, 255, 255, 0.15);
 
@@ -46,7 +48,7 @@ body {
 }
 
 ::selection {
-  background: rgba(243, 213, 138, 0.35);
+  background: rgba(225, 20, 28, 0.45);
   color: #fff;
 }
 

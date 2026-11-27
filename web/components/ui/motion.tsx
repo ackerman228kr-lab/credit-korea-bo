@@ -72,7 +72,7 @@ export function SectionHeading({
   return (
     <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
       <p className={cn("mb-5 flex items-center gap-3 text-[11px] font-semibold tracking-[0.32em] text-champagne uppercase", align === "center" && "justify-center")}>
-        <span className="h-px w-8 bg-champagne/60" />
+        <span className="h-px w-8 bg-gradient-to-r from-ruby to-champagne" />
         {eyebrow}
       </p>
       <h2 className="font-display text-4xl leading-[1.05] font-medium text-white sm:text-5xl md:text-6xl">{title}</h2>

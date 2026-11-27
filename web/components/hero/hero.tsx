@@ -211,7 +211,7 @@ export function Hero({ settings }: { settings: Settings }) {
           transition={{ duration: 1, ease, delay: 0.5 }}
           className="mb-4 hidden items-center gap-3 text-[10px] sm:flex font-semibold tracking-[0.4em] text-champagne uppercase sm:text-[11px]"
         >
-          <span className="h-px w-8 bg-champagne/60" /> Ломбард нового поколения
+          <span className="h-px w-8 bg-gradient-to-r from-ruby to-champagne" /> Ломбард нового поколения
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
@@ -312,7 +312,7 @@ export function Hero({ settings }: { settings: Settings }) {
                 onClick={() => (select(i), setInteracting(true))}
                 className="group relative h-8 px-1"
               >
-                <span className={`block h-[3px] rounded-full transition-all duration-500 ${i === active ? "w-9 bg-liquid" : "w-4 bg-white/25 group-hover:bg-white/50"}`} />
+                <span className={`block h-[3px] rounded-full transition-all duration-500 ${i === active ? "w-9 bg-gradient-to-r from-ruby to-liquid" : "w-4 bg-white/25 group-hover:bg-white/50"}`} />
               </button>
             ))}
           </div>

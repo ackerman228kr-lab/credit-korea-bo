@@ -16,9 +16,8 @@ const cormorant = Cormorant_Garamond({
 const manrope = Manrope({ subsets: ["latin", "cyrillic"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: `${site.name} — ломбард премиум-класса`, template: `%s · ${site.name}` },
+  title: { default: `${site.name} ${site.descriptor} — ломбард премиум-класса`, template: `%s · ${site.name}` },
   description: site.description,
-  icons: { icon: site.logo },
   openGraph: { title: site.name, description: site.description, type: "website", locale: "ru_RU" },
 };
 
