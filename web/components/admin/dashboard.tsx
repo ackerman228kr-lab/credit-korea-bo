@@ -449,6 +449,50 @@ function Branches({ branches }: { branches: Branch[] }) {
   );
 }
 
+/** Big, phone-friendly photo picker: tap → camera or gallery, instant preview. */
+function PhotoPicker({ current, category }: { current: string | null; category: string }) {
+  const [preview, setPreview] = useState<string | null>(null);
+  const [remove, setRemove] = useState(false);
+  const shown = preview ?? (remove ? null : current);
+  return (
+    <div>
+      <span className="label">Фото товара</span>
+      <label className="group relative flex cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-dashed border-white/20 bg-white/[0.03] p-4 text-center transition hover:border-liquid/60">
+        {shown ? (
+          <img src={shown} alt="" className="h-48 w-full rounded-xl object-cover" />
+        ) : (
+          <>
+            <img src={`/fallback/${category}.png`} alt="" className="h-24 w-24 object-contain opacity-40" />
+            <span className="text-sm text-white">Нажмите, чтобы сфотографировать или выбрать фото</span>
+            <span className="text-xs text-platinum/45">JPG, PNG или WEBP, до 8 МБ</span>
+          </>
+        )}
+        {shown && <span className="text-xs text-platinum/60">Нажмите, чтобы заменить фото</span>}
+        <input
+          type="file"
+          name="imageFile"
+          accept="image/jpeg,image/png,image/webp"
+          className="sr-only"
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) {
+              setPreview(URL.createObjectURL(f));
+              setRemove(false);
+            }
+          }}
+        />
+      </label>
+      <input type="hidden" name="imageUrl" defaultValue={current ?? ""} />
+      {current && !preview && (
+        <label className="mt-2 flex items-center gap-2 text-xs text-platinum/60">
+          <input type="checkbox" name="removeImage" checked={remove} onChange={(e) => setRemove(e.target.checked)} className="accent-[#D6B56D]" />
+          Удалить фото (будет показана 3D-картинка категории)
+        </label>
+      )}
+    </div>
+  );
+}
+
 function Offers({ offers, settings }: { offers: Offer[]; settings: Settings }) {
   const [edit, setEdit] = useState<Partial<Offer> | null>(null);
   const { pending, error, run } = useAction();
@@ -464,7 +508,7 @@ function Offers({ offers, settings }: { offers: Offer[]; settings: Settings }) {
         {offers.length === 0 && <p className="p-10 text-center text-platinum/50">Нет предложений.</p>}
         {offers.map((o) => (
           <div key={o.id} className="flex items-center gap-4 border-b border-white/6 p-4 last:border-0">
-            <img src={o.imageUrl || `/fallback/${o.category}.png`} alt="" className="h-14 w-14 shrink-0 object-contain" />
+            <img src={o.imageUrl || `/fallback/${o.category}.png`} alt="" className={cn("h-14 w-14 shrink-0 rounded-lg", o.imageUrl ? "object-cover" : "object-contain")} />
             <div className="min-w-0 flex-1">
               <p className="truncate font-medium text-white">{o.title}</p>
               <p className="text-xs text-platinum/50">
@@ -509,7 +553,7 @@ function Offers({ offers, settings }: { offers: Offer[]; settings: Settings }) {
                 <textarea id="f-description" name="description" defaultValue={edit.description} className="field min-h-24" />
               </div>
               <div className="sm:col-span-2">
-                <Text label="URL изображения (необязательно)" name="imageUrl" defaultValue={edit.imageUrl} />
+                <PhotoPicker current={edit.imageUrl ?? null} category={edit.category ?? "gold"} />
               </div>
               <label className="flex items-center gap-2 text-sm text-platinum/70 sm:col-span-2">
                 <input type="checkbox" name="active" defaultChecked={edit.active ?? true} className="accent-[#D6B56D]" /> Показывать на сайте

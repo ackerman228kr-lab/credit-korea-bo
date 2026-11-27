@@ -155,6 +155,10 @@ export function createSupabaseRepo(url: string, key: string, bucket: string): Re
       check(await sb.storage.from(bucket).upload(name, data, { contentType, upsert: false }));
       return name;
     },
+    async uploadOfferImage(name, data, contentType) {
+      check(await sb.storage.from("offer-images").upload(name, data, { contentType, upsert: true }));
+      return sb.storage.from("offer-images").getPublicUrl(name).data.publicUrl;
+    },
     async photoUrl(key) {
       const { data } = await sb.storage.from(bucket).createSignedUrl(key, 60 * 60);
       return data?.signedUrl ?? "";

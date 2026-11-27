@@ -71,6 +71,11 @@ insert into storage.buckets (id, name, public)
 values ('valuation-photos', 'valuation-photos', false)
 on conflict (id) do nothing;
 
+-- Public bucket for showcase product photos uploaded from the admin.
+insert into storage.buckets (id, name, public)
+values ('offer-images', 'offer-images', true)
+on conflict (id) do nothing;
+
 -- Demo content (safe to delete).
 insert into public.branches (id, name, city, address, hours, phone, whatsapp, lat, lng, sort) values
   ('seoul-gangnam', 'Gangnam Flagship', 'Сеул', 'Seoul, Gangnam-gu, Teheran-ro 152', 'Пн–Сб 10:00–21:00, Вс 11:00–19:00', '+82 2-000-0001', '82200000001', 37.5005, 127.0365, 1),

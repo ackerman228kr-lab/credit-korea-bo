@@ -44,8 +44,12 @@ export function OffersGrid({ offers, settings, filterable = true, limit }: { off
             return (
               <motion.div key={o.id} layout initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}>
                 <TiltCard className="glass flex h-full flex-col overflow-hidden rounded-3xl">
-                  <div className="relative flex h-48 items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.06),transparent_70%)]">
-                    <img src={o.imageUrl || `/fallback/${o.category}.png`} alt={o.title} loading="lazy" className="h-40 w-40 object-contain" />
+                  <div className="relative flex h-48 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.06),transparent_70%)]">
+                    {o.imageUrl ? (
+                      <img src={o.imageUrl} alt={o.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                    ) : (
+                      <img src={`/fallback/${o.category}.png`} alt={o.title} loading="lazy" className="h-40 w-40 object-contain" />
+                    )}
                     <span className="absolute top-4 left-4 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] tracking-[0.18em] text-platinum/70 uppercase">
                       {categories.find((c) => c.id === o.category)?.label}
                     </span>

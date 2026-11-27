@@ -19,6 +19,8 @@ export interface Repository {
 
   /** Store an uploaded photo, returning its storage key. */
   uploadPhoto(name: string, data: ArrayBuffer, contentType: string): Promise<string>;
+  /** Store a public product photo for the showcase, returning its public URL. */
+  uploadOfferImage(name: string, data: ArrayBuffer, contentType: string): Promise<string>;
   /** Resolve a storage key to a URL the admin can view. */
   photoUrl(key: string): Promise<string>;
 }

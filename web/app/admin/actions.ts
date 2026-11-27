@@ -87,6 +87,14 @@ export async function saveOffer(form: FormData) {
     createdAt: s(form.get("createdAt"), 40) || new Date().toISOString(),
   };
   if (!o.title) throw new Error("Название обязательно");
+  const file = form.get("imageFile");
+  if (file instanceof File && file.size > 0) {
+    const ext = ({ "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" } as Record<string, string>)[file.type];
+    if (!ext) throw new Error("Фото должно быть JPG, PNG или WEBP");
+    if (file.size > 8 * 1024 * 1024) throw new Error("Фото больше 8 МБ");
+    o.imageUrl = await db().uploadOfferImage(`${o.id}-${Date.now()}.${ext}`, await file.arrayBuffer(), file.type);
+  }
+  if (form.get("removeImage") === "on") o.imageUrl = null;
   await db().upsertOffer(o);
   refresh();
 }

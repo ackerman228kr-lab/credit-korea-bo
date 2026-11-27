@@ -18,6 +18,7 @@ interface Db {
 const DIR = path.join(process.cwd(), ".data");
 const FILE = path.join(DIR, "db.json");
 export const UPLOAD_DIR = path.join(DIR, "uploads");
+export const OFFER_IMG_DIR = path.join(DIR, "offer-images");
 
 let memory: Db | null = null;
 let writable = true;
@@ -118,6 +119,11 @@ export const localRepo: Repository = {
     await fs.mkdir(UPLOAD_DIR, { recursive: true });
     await fs.writeFile(path.join(UPLOAD_DIR, name), Buffer.from(data));
     return name;
+  },
+  async uploadOfferImage(name, data) {
+    await fs.mkdir(OFFER_IMG_DIR, { recursive: true });
+    await fs.writeFile(path.join(OFFER_IMG_DIR, name), Buffer.from(data));
+    return `/api/images/${encodeURIComponent(name)}`;
   },
   async photoUrl(key) {
     return `/api/admin/photo/${encodeURIComponent(key)}`;
