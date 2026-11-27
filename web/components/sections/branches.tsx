@@ -40,7 +40,8 @@ function Constellation({ branches, active, onPick }: { branches: Branch[]; activ
   );
 }
 
-export function Branches({ branches }: { branches: Branch[] }) {
+/** `embedMap={false}` swaps the Google Maps frame for a static panel (e.g. sandboxed previews). */
+export function Branches({ branches, embedMap = true }: { branches: Branch[]; embedMap?: boolean }) {
   const [active, setActive] = useState(0);
   const b = branches[active];
 
@@ -80,6 +81,13 @@ export function Branches({ branches }: { branches: Branch[] }) {
             </Reveal>
 
             <Reveal delay={0.1} className="glass relative min-h-[460px] overflow-hidden rounded-[2rem]">
+              {!embedMap ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_50%_40%,rgba(214,181,109,0.12),transparent_60%)]">
+                  <div className="w-full max-w-md px-6 pb-40 opacity-80">
+                    <Constellation branches={branches} active={active} onPick={setActive} />
+                  </div>
+                </div>
+              ) : (
               <AnimatePresence mode="wait">
                 <motion.iframe
                   key={b.id}
@@ -94,6 +102,7 @@ export function Branches({ branches }: { branches: Branch[] }) {
                   className="absolute inset-0 h-full w-full [filter:invert(92%)_hue-rotate(180deg)_saturate(0.35)_brightness(0.85)_contrast(1.1)]"
                 />
               </AnimatePresence>
+              )}
               <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(8,9,12,0.65))]" />
               <div aria-hidden className="pointer-events-none absolute inset-0 bg-champagne/10 mix-blend-color" />
 
